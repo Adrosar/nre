@@ -1,0 +1,21 @@
+# Release for Windows
+nre.exe
+
+# Release for Linux/MacOS
+nre
+
+# Other
+/nre-*-alpha
+/nre-*-alpha.zip
+
+# Runtimes
+/runtimes/*
+!/runtimes/_
+
+# System temporary files:
+.DS_Store
+Desktop.ini
+._*
+Thumbs.db
+.Spotlight-V100
+.Trashes
