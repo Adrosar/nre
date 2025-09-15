@@ -1,7 +1,7 @@
 package main
 
 import (
-	"nre/internal/cli"
+	"github.com/Adrosar/nre/internal/cli"
 )
 
 func main() {

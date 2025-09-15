@@ -2,11 +2,12 @@ package cli
 
 import (
 	"fmt"
-	"nre/internal/helpers"
 	"os"
 	"os/signal"
 	"strings"
 	"syscall"
+
+	"github.com/Adrosar/nre/internal/helpers"
 )
 
 func Run() {
