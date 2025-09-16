@@ -3,7 +3,8 @@
 An extension for:
 
 * [NVM for Windows](https://github.com/coreybutler/nvm-windows)
-* [NVM for Linux/MacOS](https://github.com/nvm-sh/nvm) (work in progress)
+* [NVM for Linux](https://github.com/nvm-sh/nvm)
+* [NVM for MacOS](https://github.com/nvm-sh/nvm) (work in progress)
 
 This utility ensures that any CMD command is executed within an environment configured for the selected **NodeJS** version.
 
@@ -27,9 +28,34 @@ go install github.com/Adrosar/nre@latest
 
 ... or download the compiled version:
 
-1. Download and extract the archive `nre-0.1.0-win64.zip`.
+1. Download and extract the archive `nre-0.2.0-win64.zip`.
 2. Move the `nre.exe` binary to the `%NVM_HOME%` directory.
 3. Open a terminal (console) and run the `nre` command to confirm that the application is functioning correctly.
+
+
+
+## Requirements (Linux)
+
+Before installation, ensure the following software is installed:
+
+* [NVM for Linux](https://github.com/nvm-sh/nvm)
+
+
+
+## Installation (Linux)
+
+If you have GoLang version 1.20.4 or higher, run the command:
+
+```
+go install github.com/Adrosar/nre@latest
+```
+
+... or download the compiled version:
+
+1. Download and extract the archive `nre-0.2.0-linux64.zip`.
+2. Move the `nre` binary to the `$NVM_DIR` directory.
+3. Set execute permissions: `chmod +x nre`
+4. Open a terminal (console) and run the `nre` command to confirm that the application is functioning correctly.
 
 
 
@@ -69,6 +95,29 @@ To generate the `nre.exe` executable for Windows:
 
 ```
  go build -o nre.exe main.go
+```
+
+
+
+## Development (Linux)
+
+To build and run NRE from source, ensure the following prerequisites are installed:
+
+* Go 1.20.4 for Linux
+* [NVM for Linux](https://github.com/nvm-sh/nvm)
+
+### Running from Source
+
+```
+go run main.go
+```
+
+### Building the Binary
+
+To generate the `nre` executable for Linux:
+
+```
+ go build -o nre main.go
 ```
 
 
