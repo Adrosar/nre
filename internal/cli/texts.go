@@ -1,7 +1,7 @@
 package cli
 
 const INFO = `Node Runtime Environment
-  - Version 0.1.0
+  - Version 0.2.0
   - See https://github.com/Adrosar/nre
   - Go to help "nre help"`
 
@@ -20,15 +20,6 @@ Additional commands:
   > nre req ....... requirements
   > nre list ...... see all NodeJS versions`
 
-const REQ = `Requirements:
-  NRE requires NVM to be installed and
-  the "NVM_HOME" environment variable to be set.
-
-  Check if NVM_HOME is not empty:
-    1. Open CMD (Windows Terminal)
-    2. Run command:
-         echo %NVM_HOME%
-    3. Check if the path is displayed.
-
-  Node Version Manager:
-    - for Windows ... https://github.com/coreybutler/nvm-windows`
+const REQ = `NRE requires NVM:
+  - for Windows ... https://github.com/coreybutler/nvm-windows
+  - for Linux ..... https://github.com/nvm-sh/nvm`

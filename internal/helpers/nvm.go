@@ -8,12 +8,21 @@ import (
 )
 
 func NvmHome() string {
+	if runtime.GOOS != `windows` {
+		return os.Getenv(`NVM_DIR`)
+	}
+
 	return os.Getenv(`NVM_HOME`)
 }
 
 func NvmList() (map[string]string, error) {
+	sep := string(os.PathSeparator)
 	result := make(map[string]string, 10)
+
 	home := NvmHome()
+	if runtime.GOOS != `windows` {
+		home = home + sep + `versions` + sep + `node`
+	}
 
 	entries, err := os.ReadDir(home)
 	if err != nil {
@@ -25,10 +34,9 @@ func NvmList() (map[string]string, error) {
 			dir := entry.Name()
 			ok := strings.HasPrefix(dir, `v`)
 			if ok {
-				sep := string(os.PathSeparator)
 				end := ``
 				if runtime.GOOS != `windows` {
-					end = sep + `node/bin/node`
+					end = sep + `bin`
 				}
 
 				full := home + sep + dir + end

@@ -50,7 +50,7 @@ func Run() {
 
 		ned, err := helpers.FindPathForNode(njsVer)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "directory for NodeJS (%s) does not exist: %s", njsVer, err.Error())
+			fmt.Fprintf(os.Stderr, "directory for NodeJS (%s) does not exist: %s\n", njsVer, err.Error())
 			os.Exit(1)
 		}
 
