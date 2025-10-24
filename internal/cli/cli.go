@@ -36,8 +36,20 @@ func Run() {
 			}
 
 			fmt.Fprintf(os.Stdout, "in \"%s\"\n", helpers.NvmHome())
+		case `link`:
+			fmt.Fprintf(os.Stdout, "Link command requires two parameters!")
 		default:
 			fmt.Fprintf(os.Stdout, `Unknown command "%s" !`, arg1)
+		}
+
+		return
+	}
+
+	if l == 3 && os.Args[1] == `link` {
+		err := helpers.Link(os.Args[2])
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "failed to create link: %s", err.Error())
+			os.Exit(1)
 		}
 
 		return
@@ -51,19 +63,19 @@ func Run() {
 		ned, err := helpers.FindPathForNode(njsVer)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "directory for NodeJS (%s) does not exist: %s\n", njsVer, err.Error())
-			os.Exit(1)
+			os.Exit(2)
 		}
 
 		wh, err := helpers.FindInPath(`node`)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "failed to find NodeJS location: %s\n", err.Error())
-			os.Exit(2)
+			os.Exit(3)
 		}
 
 		nmb, err := helpers.NodeModulesBinDir()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "it is impossible to determine whether the project contains additional commands: %s\n", err.Error())
-			os.Exit(3)
+			os.Exit(4)
 		}
 
 		envPath := helpers.ExpandPathList(helpers.ReducePathList(os.Getenv(`PATH`), wh), nmb, ned)
@@ -76,7 +88,7 @@ func Run() {
 		err = helpers.RunCommand(sigs, cmdArgs)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "run \"%v\" failed: %s\n", strings.Join(cmdArgs, " "), err.Error())
-			os.Exit(4)
+			os.Exit(5)
 		}
 	}
 }
