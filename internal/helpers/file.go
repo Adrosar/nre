@@ -19,17 +19,44 @@ func IsExist(p string) (bool, error) {
 }
 
 func Link(target string) error {
+	var sep = string(os.PathSeparator)
 	var err error = nil
+	var name string = ""
+	var pth string = ""
+	var wd string = ""
+	var ok bool = false
 
-	wd, err := os.Getwd()
-	if err != nil {
-		return fmt.Errorf("link: getwd: %s", err.Error())
+	pth = target + sep + `package.json`
+	ok, err = IsExist(pth)
+
+	if !ok {
+		return fmt.Errorf("folder \"%s\" is not an NPM package", target)
 	}
 
-	sep := string(os.PathSeparator)
-	err = os.Symlink(target, wd+sep+`node_modules`+sep+filepath.Base(target))
 	if err != nil {
-		return fmt.Errorf("link: symlink: %s", err.Error())
+		return fmt.Errorf("packet check error: %s", err.Error())
+	}
+
+	wd, err = os.Getwd()
+	if err != nil {
+		return fmt.Errorf("unable to get working directory: %s", err.Error())
+	}
+
+	name = filepath.Base(target)
+	pth = wd + sep + `node_modules` + sep + name
+	ok, err = IsExist(pth)
+
+	if ok {
+		return fmt.Errorf("package \"%s\" already exists", name)
+	}
+
+	if err != nil {
+		return fmt.Errorf("failed to check location \"%s\" due to error: %s", pth, err.Error())
+	}
+
+	err = os.Symlink(target, pth)
+	if err != nil {
+		return fmt.Errorf("unable to create link: %s", err.Error())
 	}
 
 	return nil
