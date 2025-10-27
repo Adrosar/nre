@@ -28,7 +28,7 @@ go install github.com/Adrosar/nre@latest
 
 ... or download the compiled version:
 
-1. Download and extract the archive `nre-0.2.0-win64.zip`.
+1. Download and extract the archive `nre-0.3.0-win64.zip`.
 2. Move the `nre.exe` binary to the `%NVM_HOME%` directory.
 3. Open a terminal (console) and run the `nre` command to confirm that the application is functioning correctly.
 
@@ -52,7 +52,7 @@ go install github.com/Adrosar/nre@latest
 
 ... or download the compiled version:
 
-1. Download and extract the archive `nre-0.2.0-linux64.zip`.
+1. Download and extract the archive `nre-0.3.0-linux64.zip`.
 2. Move the `nre` binary to the `$NVM_DIR` directory.
 3. Set execute permissions: `chmod +x nre`
 4. Open a terminal (console) and run the `nre` command to confirm that the application is functioning correctly.
