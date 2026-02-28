@@ -55,6 +55,12 @@ func Run() {
 		return
 	}
 
+	if l == 4 && os.Args[2] == `run` {
+		njsVer := os.Args[1]
+		script := os.Args[3]
+		os.Args = []string{os.Args[0], njsVer, "npm", "run", script}
+	}
+
 	if l > 2 {
 		njsVer := os.Args[1]
 		cmdArgs := os.Args[2:]

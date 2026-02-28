@@ -11,6 +11,7 @@ const HELP = `Main command:
 Examples:
   > nre 8 node -v
   > nre 10 npm run build
+  > nre 16 run build (alias for "npm run")
   > nre 12 gulp --env dev
   > nre 14 git commit -m "lorem ipsum"
 
