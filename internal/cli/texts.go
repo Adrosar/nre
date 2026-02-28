@@ -1,7 +1,7 @@
 package cli
 
 const INFO = `Node Runtime Environment
-  - Version 0.3.0
+  - Version 0.4.0
   - See https://github.com/Adrosar/nre
   - Go to help "nre help"`
 
